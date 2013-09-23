@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ru.mrgrechkinn.java.webapp.ldap_testing.model.Group;
 import ru.mrgrechkinn.java.webapp.ldap_testing.model.User;
 import ru.mrgrechkinn.java.webapp.ldap_testing.service.AuthenticationService;
 
@@ -31,7 +32,15 @@ public class TestServlet extends HttpServlet {
         List<User> users = auth.getAllUsers();
         PrintWriter out = response.getWriter();
         for (User user : users) {
-            out.write(user.getUid() + " " + user.getCommonName() + " " + user.getLastName() + "\n");
+            out.write("User: " + user.getUid() + " " + user.getCommonName() + " " + user.getLastName() + "\n");
+            List<Group> groups = auth.getUserGroups(user.getUid());
+            if (!groups.isEmpty()) {
+                out.write("Groups: ");
+                for (Group group : groups) {
+                    out.write(group.name() + " ");
+                }
+                out.write("\n");
+            }
         }
         out.close();
     }
