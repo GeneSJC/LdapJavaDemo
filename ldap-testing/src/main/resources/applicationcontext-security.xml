@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:s="http://www.springframework.org/schema/security"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+  <s:ldap-server root="dc=genecorp,dc=com" ldif="classpath:testData.ldif" port="10389" />
+
+  <bean id="contextSource" class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
+    <constructor-arg value="ldap://localhost:10389/dc=genecorp,dc=com" />
+  </bean>
+
+  <bean id="ldapTemplate" class="org.springframework.ldap.core.LdapTemplate">
+    <constructor-arg ref="contextSource" />
+  </bean>
+
+  <bean id="authenticationService" class="ru.mrgrechkinn.java.webapp.ldap_testing.service.AuthenticationService">
+    <constructor-arg ref="ldapTemplate" />
+  </bean>
+
+</beans>

@@ -1,0 +1,4 @@
+ldap-testing/target/*
+ldap-testing/.settings/*
+ldap-testing/.classpath
+ldap-testing/.project

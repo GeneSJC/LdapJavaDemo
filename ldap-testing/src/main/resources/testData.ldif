@@ -1,0 +1,51 @@
+dn: ou=groups,dc=genecorp,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: groups
+
+dn: cn=gene_admin,ou=groups,dc=genecorp,dc=com
+objectClass: groupOfUniqueNames
+cn: gene_admin
+uniqueMember: uid=admin,ou=people,dc=genecorp,dc=com
+
+dn: cn=gene_user,ou=groups,dc=genecorp,dc=com
+objectClass: groupOfUniqueNames
+cn: gene_user
+uniqueMember: uid=jim1,ou=people,dc=genecorp,dc=com
+uniqueMember: uid=jim2,ou=people,dc=genecorp,dc=com
+
+dn: ou=people,dc=genecorp,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: people
+
+dn: uid=admin,ou=people,dc=genecorp,dc=com
+uid: admin
+objectClass: uidObject
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: Eugene
+sn: Rudenko
+userPassword: admin
+
+dn: uid=jim1,ou=people,dc=genecorp,dc=com
+objectClass: uidObject
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+uid: jim1
+cn: James
+sn: Jim
+userPassword: test
+
+dn: uid=jim2,ou=people,dc=genecorp,dc=com
+objectClass: uidObject
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+uid: jim2
+cn: James
+sn: Jim
+userPassword: test2
+
