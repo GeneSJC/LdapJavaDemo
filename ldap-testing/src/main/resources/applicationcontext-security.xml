@@ -5,8 +5,11 @@
 
   <s:ldap-server root="dc=genecorp,dc=com" ldif="classpath:testData.ldif" port="10389" />
 
-  <bean id="contextSource" class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
-    <constructor-arg value="ldap://localhost:10389/dc=genecorp,dc=com" />
+  <bean id="contextSource" class="org.springframework.ldap.core.support.LdapContextSource">
+    <property name="url" value="ldap://localhost:10389" />
+    <property name="base" value="dc=genecorp,dc=com" />
+    <property name="userDn" value="uid=admin,ou=people,dc=genecorp,dc=com" />
+    <property name="password" value="admin" />
   </bean>
 
   <bean id="ldapTemplate" class="org.springframework.ldap.core.LdapTemplate">

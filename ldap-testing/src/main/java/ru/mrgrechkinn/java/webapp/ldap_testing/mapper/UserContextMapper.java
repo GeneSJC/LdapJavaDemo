@@ -18,7 +18,7 @@ public class UserContextMapper implements AttributesMapper {
         if (lastName != null)
             user.setLastName(lastName);
         String uid = (String) attributes.get("uid").get();
-        if (lastName != null)
+        if (uid != null)
             user.setUid(uid);
         return user;
     }
